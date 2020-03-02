@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axel or.com/xml/ns/object-views/object-views_5.2.xsd">
+  <grid name="city-grid" title="city List" model="com.axelor.apps.base.db.City" id="gst-city-grid" extension="true" >
+    
+    <field name="state"></field>
+ 
+  </grid>
+  <form id="gst-city-form" name="city-form" title="city List" model="com.axelor.apps.base.db.City"  extension="true" >
+		 <extend target="panel[@title='Localization']">
+    <insert position="after">     
+      <panel>
+        <field name="state"/>
+      </panel>
+    </insert>
+  </extend>
+  </form>
+
+
+ </object-views>

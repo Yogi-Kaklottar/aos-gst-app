@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models
+  xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.2.xsd">
+
+  <module name="gst" package="com.axelor.apps.account.db" />
+  <entity name="Invoice">
+      <many-to-one name="shippingAddress" ref="com.axelor.apps.account.db.Address" title="Shipping Addres"/>
+      <boolean name="isUseInVoiceAddressAsShipping" title="Use Invoice Address As Shipping" default="true"/> 
+        <decimal name="gstRate" readonly="true" title="GST RATE"></decimal>    
+      <decimal name="netIgst" readonly="true" title="NetIGST"/>
+      <decimal name="netCsgst" readonly="true" title="NetCSGST"/>
+      <decimal name="netSgst" readonly="true" title="NetSGST"/>     
+   </entity>
+  </domain-models>

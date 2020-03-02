@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axel or.com/xml/ns/object-views/object-views_5.2.xsd">
+
+  <grid name="product-grid" title="product List"   model="com.axelor.apps.base.db.Product" id="gst-product-grid" extension="true">
+    <field name="hsbn"></field> 
+  <field name="gstRate"></field>
+  </grid>
+
+  <form name="product-form" title="product list"   model="com.axelor.apps.base.db.Product" id="gst-product-form" extension="true">
+   <extend target="panel[@name='mainPanel']">
+    <insert position="after">    
+    <panel>
+      <field name="hsbn"></field>     
+      <field name="gstRate"></field>
+    </panel>
+    </insert>
+    </extend>
+  </form>
+  </object-views>

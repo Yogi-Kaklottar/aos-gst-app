@@ -351,12 +351,14 @@ public class InvoiceController {
                     format,
                     reportType,
                     locale);
+        System.err.println(fileLink);
         title = I18n.get("Invoice");
         response.setCanClose(true);
       } else {
         throw new AxelorException(
             TraceBackRepository.CATEGORY_MISSING_FIELD, I18n.get(IExceptionMessage.INVOICE_3));
       }
+
       response.setView(ActionView.define(title).add("html", fileLink).map());
       response.setCanClose(true);
     } catch (Exception e) {

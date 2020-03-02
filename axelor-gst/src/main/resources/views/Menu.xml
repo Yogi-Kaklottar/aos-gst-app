@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.2.xsd">
+	<menuitem name="menu-gst-root" order="-100" title="Gst" icon="fa-users" icon-background="blue" if="__config__.app.isApp('gst')" />
+	<menuitem title="State" name="menu-gst-root-party-configuration-state" parent="menu-gst-root" action="state.all" tag-style="important" />
+	<action-view name="state.all" model="com.axelor.gst.db.State" title="State">
+		<view type="grid" name="gst-configuration-state-grid" />
+		<view type="form" name="gst-configuration-state-form" />
+		<context name="json-enhance" expr="true" />
+	</action-view>
+
+	
+</object-views>

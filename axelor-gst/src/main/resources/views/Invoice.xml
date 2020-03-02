@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axel or.com/xml/ns/object-views/object-views_5.2.xsd">
+	<grid name="invoice-grid" title="Invoice"
+		model="com.axelor.apps.account.db.Invoice" id="gst-invoice-grid"
+		extension="true">		
+		
+		 
+		<field name="netIgst" if="__config__.app.isApp('gst')"/>
+		<field name="netCsgst" if="__config__.app.isApp('gst')"/>
+		<field name="netSgst" if="__config__.app.isApp('gst')"/>
+	</grid>
+	<form id="gst-invoice-form" name="invoice-form" title="Invoice" model="com.axelor.apps.account.db.Invoice" extension="true">
+  <extend target="panel[@name='invoicingInfoPanel']">
+    <insert position="after">
+      <panel name="TexInformation" title="Tax Amount" if="__config__.app.isApp('gst')">
+        
+        <field name="netIgst" if="__config__.app.isApp('gst')"/>
+        <field name="netCsgst" if="__config__.app.isApp('gst')"/>
+        <field name="netSgst" if="__config__.app.isApp('gst')"/>
+      </panel>
+    </insert>
+  </extend>
+  <extend target="//field[@name='partner']">
+    <replace>
+      <field name="partner" readonlyIf="((operationTypeSelect == 3 || operationTypeSelect == 4) &amp;&amp; statusSelect != 1) || ((operationTypeSelect == 1 || operationTypeSelect == 2) &amp;&amp; (statusSelect != 1 || invoiceLineList.length > 0))" colSpan="3" canEdit="false" onChange="action-group-account-invoice-partner-onchange,action-method-invoice-address-str" onSelect="action-invoice-method-set-partner-domain" form-view="partner-form" grid-view="partner-grid"/>
+    </replace>
+  </extend>
+</form>
+
+<!-- invoicelineChange -->
+<action-group name="action-invoice-group-invoice-line-onchange" id="gst-action-invoice-group-invoice-line-onchange">
+		<action name="action-invoice-method-remove-subline"/> 
+		<action name="save" if="invoiceLineList.find{it->it.typeSelect == 2 &amp;&amp; (it.version != null || it.id == null)} != null" />
+		<action name="action-invoice-method-add-subline"/>
+		<action name="action-invoice-method-compute"/>
+		<action name="save" if="invoiceLineList.find{it->it.typeSelect == 2 &amp;&amp; (it.version != null || it.id == null)} != null" />				
+	</action-group>
+    
+</object-views>
