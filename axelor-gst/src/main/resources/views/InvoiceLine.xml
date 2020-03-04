@@ -95,7 +95,7 @@
 	</action-attrs>
 
 	<action-method name="action-invoice-line-method-calculate-gst-total">
-		<call class="com.axelor.apps.gst.service.web.InvoiceLineControllerGst" method="setInvoiceLineGstComputation" />
+		<call class="com.axelor.apps.gst.service.web.InvoiceLineController" method="setInvoiceLineGstComputation" />
 	</action-method>
 
 </object-views>

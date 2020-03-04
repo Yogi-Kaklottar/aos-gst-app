@@ -10,7 +10,7 @@ import com.axelor.rpc.ActionResponse;
 import com.google.inject.Inject;
 import java.util.List;
 
-public class InvoiceControllerGst extends InvoiceController {
+public class InvoiceGstController extends InvoiceController {
   @Inject InvoiceServiceGst invoiceServiceGst;
   @Inject InvoiceLineServiceGst gstInvoiceLineService;
 
@@ -28,12 +28,9 @@ public class InvoiceControllerGst extends InvoiceController {
         invoice.setInvoiceLineList(invoiceLineList);
         response.setValue("invoiceLineList", invoiceLineList);
         Invoice invoiceNetGstData = invoiceServiceGst.setGstValues(invoice);
-        invoice.setNetIgst(invoiceNetGstData.getNetIgst());
-        invoice.setNetCsgst(invoiceNetGstData.getNetCsgst());
-        invoice.setNetSgst(invoiceNetGstData.getNetSgst());
-        response.setValue("netIgst", invoice.getNetIgst());
-        response.setValue("netCsgst", invoice.getNetCsgst());
-        response.setValue("netSgst", invoice.getNetSgst());
+        response.setValue("netIgst", invoiceNetGstData.getNetIgst());
+        response.setValue("netCsgst", invoiceNetGstData.getNetCsgst());
+        response.setValue("netSgst", invoiceNetGstData.getNetSgst());
       }
     } catch (Exception e) {
 
